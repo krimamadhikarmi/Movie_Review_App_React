@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "./Button";
+
 export function ReviewForm() {
   const [review, setReview] = useState("");
   const [movieId, setMovieId] = useState("");
@@ -36,7 +37,7 @@ export function ReviewForm() {
         addReview();
       }}
     >
-      <div className="flex justify-center mt-4 mx-auto">
+      <div className="flex">
         <div className="rounded overflow-hidden shadow-lg shadow-sky-900 bg-sky-300 mb-5 w-2/6 ml-14 mt-12">
           <div className="px-6 py-8 h-full flex">
             <div className="mt-2 ml-5">
