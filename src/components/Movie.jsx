@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
+
 import { ReviewForm } from "./ReviewForm";
-import { ReviewDisplay } from "./ReviewDisplay";
+import { ReviewList } from "./ReviewList";
 
-export function GetApi() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/v1/movies/all/movie_reviews")
-      .then((response) => response.json())
-      .then((data) => setMovies(data));
-  }, []);
-
+export function Movie({ movies }) {
   return (
-    <div className="px-6 mt-12 ml-2  grid grid-cols-2 sm:grid-cols-2  lg:grid-cols-3 gap-6 overflow-y-auto ">
+    <div className="px-6 mt-12 ml-2 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto ">
       {movies.map((movie, index) => (
         <div
           key={index}
-          className="border border-gray-300 rounded-lg mb-6 shadow-md shadow-white"
+          className="border border-gray-300 rounded-lg mb-6 shadow-md shadow-white relative"
+          style={{ minHeight: "300px", display: "flex", flexDirection: "column" }}
         >
-          <div className="p-4">
+          <div className="p-4 flex-grow">
             <div
               className="font-normal text-white mb-1"
               style={{ fontFamily: "Quicksand, sans-serif" }}
@@ -38,26 +31,29 @@ export function GetApi() {
                 <strong>Original Title:</strong> {movie.original_title}
               </p>
               <p className="mb-2">
-                <strong>Release Date: </strong>
-                {movie.release_date}
+                <strong>Release Date:</strong> {movie.release_date}
               </p>
               <p className="mb-2">
-                <strong>Budget: </strong>
-                {movie.budget}
+                <strong>Budget:</strong> {movie.budget}
               </p>
               <p className="mb-2">
-                <strong>Popularity: </strong>
-                {movie.popularity}
+                <strong>Popularity:</strong> {movie.popularity}
               </p>
               <p className="text-justify mb-4">
-                <strong>Overview:</strong> <br/>{movie.overview}
+                <strong>Overview:</strong> <br />
+                {movie.overview}
               </p>
-              <hr />
-              <ReviewDisplay movieId={movie.mid} />
-              <hr />
-              <ReviewForm movieId={movie.mid} />
+            </div>
+            <hr />
+           
+            <div className="mb-4 overflow-auto">
+              <ReviewList movieId={movie.mid} movie={movie}/>
             </div>
           </div>
+          <div className="p-4">
+            <ReviewForm movieId={movie.mid} />
+          </div>
+          
         </div>
       ))}
     </div>

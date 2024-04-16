@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-export function ReviewDisplay({ movieId }) {
+export function ReviewList({ movieId }) {
   const [lists, setLists] = useState("");
   useEffect(() => {
     fetch(`http://localhost:3000/api/v1/movies/${movieId}/reviews`)

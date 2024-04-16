@@ -1,5 +1,5 @@
 import './App.css';
-import { GetApi } from './components/GetApi';
+import {  MovieList } from './components/MovieList';
 import { Tittle } from './components/Navbar';
 // import { ReviewForm } from './components/ReviewForm';
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App bg-gray-600 min-h-screen">
       <Tittle/>
       
-      <GetApi />
+      <MovieList />
       {/* <ReviewForm/> */}
     </div>
   );
