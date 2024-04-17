@@ -2,14 +2,19 @@
 import { ReviewForm } from "./ReviewForm";
 import { ReviewList } from "./ReviewList";
 
-export function Movie({ movies }) {
+export function Movie({movies}) {
+  
   return (
     <div className="px-6 mt-12 ml-2 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto ">
       {movies.map((movie, index) => (
         <div
           key={index}
           className="border border-gray-300 rounded-lg mb-6 shadow-md shadow-white relative"
-          style={{ minHeight: "300px", display: "flex", flexDirection: "column" }}
+          style={{
+            minHeight: "300px",
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
           <div className="p-4 flex-grow">
             <div
@@ -45,15 +50,14 @@ export function Movie({ movies }) {
               </p>
             </div>
             <hr />
-           
+
             <div className="mb-4 overflow-auto">
-              <ReviewList movieId={movie.mid} movie={movie}/>
+              <ReviewList reviews={movie.reviews} />
             </div>
           </div>
           <div className="p-4">
             <ReviewForm movieId={movie.mid} />
           </div>
-          
         </div>
       ))}
     </div>

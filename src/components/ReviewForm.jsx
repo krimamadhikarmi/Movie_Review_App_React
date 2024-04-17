@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Button } from "./Button";
 
-export function ReviewForm({ movieId }) {
+export function ReviewForm({movieId}) {
   const [review, setReview] = useState("");
+  const [addnew,setAddNew]= useState([]);
   // const [movieId, setMovieId] = useState("");
+
+
+  // function addNewReview(){
+  //   setAddNew([...addnew,review])
+  // }
 
   function addReview() {
     const body = {
@@ -23,7 +29,8 @@ export function ReviewForm({ movieId }) {
     }).then((response) => {
       if (response.ok) {
         // setMovieId("");
-        setReview("");
+        setAddNew(...addnew,review)
+        
       }
     });
   }
